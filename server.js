@@ -21,10 +21,9 @@ p:::::::p                                                                      y
 p:::::::p                                                                     y:::::y
 ppppppppp                                                                    yyyyyyy
 *//////////////////////////////////////////////////////////////////////////////////
-const proxyMap = {
-      //hostname: port,
-      //hostname: port
-    };
+const proxyMap = require('./vhosts');
+const ssl = require('./ssl');
+const bouncy  = require('bouncy');
 
 function route( req, res, bounce ) {
     let host = req.headers.host;
@@ -52,12 +51,13 @@ function reportError ( error ) {
     }
 }
 
-require('bouncy')( route ).listen( 80 ).on('error', reportError );
-require('bouncy')({
-    ca: // your certficate authority or issuer certificate,
-    cert: //your wildcard or ssl cert
-    key:  // Private key
-}, route ).listen( 443 ).on( 'error', reportError );
+bouncy( route )
+    .listen( 80 )
+    .on('error', reportError );
+
+if( ssl ) {
+    bouncy(ssl, route ).listen( 443 ).on( 'error', reportError );
+}
 
 console.log('\n'+
 '==========================\n'+
