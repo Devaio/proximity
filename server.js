@@ -33,8 +33,7 @@ function route( req, res, bounce ) {
         bounce({
             port: port,
             headers: {
-                // this is a hack and is the reason why this
-                // module should only be use in development
+                // @TODO: Come up with a better way to handle this edge case...
                 'Connection': 'close',
                 'X-Forwarded-Proto': 'https'
             }
