@@ -1,8 +1,5 @@
-'use strict';
-require('colors');
-  /////////////////////////////////////////////////////////////////////////////////////////////////////
- /* this module is only good for development and not recommended for use in production         ///////
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+'use strict'; require('colors');
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
 ppppp   ppppppppp   rrrrr   rrrrrrrrr      ooooooooooo xxxxxxx      xxxxxxxyyyyyyy           yyyyyyy
 p::::ppp:::::::::p  r::::rrr:::::::::r   oo:::::::::::oox:::::x    x:::::x  y:::::y         y:::::y
 p:::::::::::::::::p r:::::::::::::::::r o:::::::::::::::ox:::::x  x:::::x    y:::::y       y:::::y
@@ -20,11 +17,10 @@ pp::::::ppppp::::::prr::::::rrrrr::::::ro:::::ooooo:::::o x:::::xx:::::x      y:
 p:::::::p                                                                      y:::::y
 p:::::::p                                                                     y:::::y
 ppppppppp                                                                    yyyyyyy
-
-@author: jiminikiz
-@date: 2016-08-16
-
-*//////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+| @author: jiminikiz
+| @date: 2016-08-16
+///////////////////////////////////////////////////////////////////////////////*/
 const proxyMap = require('./vhosts');
 const ssl = require('./ssl');
 const bouncy  = require('bouncy');
