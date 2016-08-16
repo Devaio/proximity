@@ -29,20 +29,20 @@ function route( req, res, bounce ) {
     let host = req.headers.host;
     let port = proxyMap[ host ];
 
-    if ( host !== undefined && port !== undefined ) {
+    if ( host && port ) {
         bounce({
             port: port,
             headers: {
-                // @TODO: Come up with a better way to handle this edge case...
+                // @TODO: Come up with a better way to handle this edge case... used to mock HTTPS
                 'Connection': 'close',
                 'X-Forwarded-Proto': 'https'
             }
         });
     } else {
         res.statusCode = 404;
-        res.end( 'Could not resolve host: ' + host + ', port: ' + port );
+        res.end(`Could not resolve host: ${host}:${port}`);
     }
-    console.log( '# Routing:'.green, host, ':', port, req.url );
+    console.log('# Routing:'.green,`${host}:${port} - ${req.url}`);
 }
 function reportError ( error ) {
     if ( error ) {
@@ -55,7 +55,9 @@ bouncy( route )
     .on('error', reportError );
 
 if( ssl ) {
-    bouncy(ssl, route ).listen( 443 ).on( 'error', reportError );
+    bouncy(ssl, route)
+        .listen(443)
+        .on('error', reportError);
 }
 
 console.log('\n'+
