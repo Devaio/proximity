@@ -20,6 +20,10 @@ pp::::::ppppp::::::prr::::::rrrrr::::::ro:::::ooooo:::::o x:::::xx:::::x      y:
 p:::::::p                                                                      y:::::y
 p:::::::p                                                                     y:::::y
 ppppppppp                                                                    yyyyyyy
+
+@author: jiminikiz
+@date: 2016-08-16
+
 *//////////////////////////////////////////////////////////////////////////////////
 const proxyMap = require('./vhosts');
 const ssl = require('./ssl');
